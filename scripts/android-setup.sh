@@ -25,20 +25,24 @@ function installAndroidSDK {
   export ANDROID_NDK_REPOSITORY=$HOME/android-ndk
   export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$PATH"
 
-  TMP=/tmp/sdk$$.zip
-  download 'https://dl.google.com/android/repository/tools_r25.2.3-linux.zip' $TMP
-  unzip -qod $ANDROID_HOME $TMP
-  rm $TMP
+  if [[ ! -d "$ANDROID_HOME" ]]; then
+    TMP=/tmp/sdk$$.zip
+    download 'https://dl.google.com/android/repository/tools_r25.2.3-linux.zip' $TMP
+    unzip -qod $ANDROID_HOME $TMP
+    rm $TMP
+  fi
 
-  TMP=/tmp/ndk$$.zip
-  mkdir -p $ANDROID_NDK_REPOSITORY
-  download 'https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip' $TMP
-  unzip -qod $ANDROID_NDK_REPOSITORY $TMP
-  rm $TMP
+  if [[ ! -d "$ANDROID_NDK_REPOSITORY" ]]; then
+    TMP=/tmp/ndk$$.zip
+    mkdir -p $ANDROID_NDK_REPOSITORY
+    download 'https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip' $TMP
+    unzip -qod $ANDROID_NDK_REPOSITORY $TMP
+    rm $TMP
+  fi
 
   mkdir -p $ANDROID_HOME/licenses/
   echo > $ANDROID_HOME/licenses/android-sdk-license
-  echo -n 8933bad161af4178b1185d1a37fbf41ea5269c55 > $ANDROID_HOME/licenses/android-sdk-license
+  echo -n 8933bad161af4178b1185d1a37fbf41ea5269c55 >> $ANDROID_HOME/licenses/android-sdk-license
 
   installsdk 'build-tools;23.0.2' 'build-tools;25.0.2' 'build-tools;25.0.1' 'platforms;android-23' 'platforms;android-25' 'extras;android;m2repository'
 }

@@ -12,6 +12,8 @@ compiler: clang
 cache:
   directories:
     - $HOME/Library/Caches/Homebrew
+    - $HOME/android-sdk
+    - $HOME/android-ndk
 
 env:
   - TARGET=java
