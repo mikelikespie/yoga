@@ -14,11 +14,7 @@ cache:
     - $HOME/Library/Caches/Homebrew
 
 env:
-  - TARGET=c
   - TARGET=java
-  - TARGET=net
-  - TARGET=ios
-  - TARGET=js
   - TARGET=android
 
 before_install:
