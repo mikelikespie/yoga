@@ -27,13 +27,13 @@ function installAndroidSDK {
 
   TMP=/tmp/sdk$$.zip
   download 'https://dl.google.com/android/repository/tools_r25.2.3-linux.zip' $TMP
-  unzip -d $ANDROID_HOME $TMP
+  unzip -qod $ANDROID_HOME $TMP
   rm $TMP
 
   TMP=/tmp/ndk$$.zip
   mkdir -p $ANDROID_NDK_REPOSITORY
   download 'https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip' $TMP
-  unzip -d $ANDROID_NDK_REPOSITORY $TMP
+  unzip -qod $ANDROID_NDK_REPOSITORY $TMP
   rm $TMP
 
   mkdir -p $ANDROID_HOME/licenses/
