@@ -35,6 +35,12 @@
 #define FB_ASSERTIONS_ENABLED 1
 #endif
 
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+
+
+
 #ifdef NS_ENUM
 // Cannot use NSInteger as NSInteger has a different size than int (which is the default type of a
 // enum).
